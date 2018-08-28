@@ -25,6 +25,7 @@ ENV PABOT_VERSION 0.43
 ENV PYTHON_PIP_VERSION 9.0.*
 ENV ROBOT_FRAMEWORK_VERSION 3.0.4
 ENV SELENIUM_LIBRARY_VERSION 3.1.1
+ENV SELENIUM_2_LIBRARY_VERSION 3.0.0
 ENV XVFB_VERSION 1.19.*
 
 # Install system dependencies
@@ -45,7 +46,11 @@ RUN pip install \
   robotframework==$ROBOT_FRAMEWORK_VERSION \
   robotframework-faker==$FAKER_VERSION \
   robotframework-pabot==$PABOT_VERSION \
-  robotframework-seleniumlibrary==$SELENIUM_LIBRARY_VERSION
+  pymysql \
+  pymssql \
+  robotframework-databaselibrary \
+  robotframework-seleniumlibrary==$SELENIUM_LIBRARY_VERSION \
+  robotframework-selenium2library==$SELENIUM_2_LIBRARY_VERSION \ 
 
 # Download Gecko drivers directly from the GitHub repository
 RUN wget -q "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
