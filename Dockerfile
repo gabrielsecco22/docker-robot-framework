@@ -31,26 +31,26 @@ ENV XVFB_VERSION 1.19.*
 # Install system dependencies
 RUN dnf upgrade -y \
   && dnf install -y \
-    chromedriver-$CHROMIUM_VERSION \
-    chromium-$CHROMIUM_VERSION \
-    firefox-$FIREFOX_VERSION \
-    python2-pip-$PYTHON_PIP_VERSION \
+    chromedriver \
+    chromium \
+    firefox \
+    python-pip \
     xauth \
-    xorg-x11-server-Xvfb-$XVFB_VERSION \
+    xorg-x11-server-Xvfb \
     which \
     wget \
   && dnf clean all
 
 # Install Robot Framework and Selenium Library
 RUN pip install \
-  robotframework==$ROBOT_FRAMEWORK_VERSION \
-  robotframework-faker==$FAKER_VERSION \
-  robotframework-pabot==$PABOT_VERSION \
+  robotframework \
+  robotframework-faker \
+  robotframework-pabot \
   pymysql \
   pymssql \
   robotframework-databaselibrary \
   robotframework-seleniumlibrary==$SELENIUM_LIBRARY_VERSION \
-  robotframework-selenium2library==$SELENIUM_2_LIBRARY_VERSION \ 
+  robotframework-selenium2library==$SELENIUM_2_LIBRARY_VERSION  
 
 # Download Gecko drivers directly from the GitHub repository
 RUN wget -q "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
